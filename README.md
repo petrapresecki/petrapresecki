@@ -32,11 +32,11 @@ _so outside work i make sites for people whose work i like_
 <table>
   <tr>
     <td width="50%" valign="top">
-      <a href="https://iva-presecki.pages.dev"><img src="https://github.com/petrapresecki/iva-v2/raw/main/docs/preview.gif" alt="Iva's keyring portfolio" /></a>
+      <a href="https://ivapresecki.com"><img src="https://github.com/petrapresecki/iva-v2/raw/main/docs/preview.gif" alt="Iva's keyring portfolio" /></a>
       <br /><a href="https://github.com/petrapresecki/iva-v2"><b>iva</b></a> ⌁ <i>a graphic designer's projects hang off a 3d keyring. pull a charm and it opens</i>
     </td>
     <td width="50%" valign="top">
-      <a href="https://bykreso.pages.dev"><img src="https://github.com/petrapresecki/bykreso-portfolio/raw/main/docs/preview.gif" alt="bykreso film strip portfolio" /></a>
+      <a href="https://bykreso.com"><img src="https://github.com/petrapresecki/bykreso-portfolio/raw/main/docs/preview.gif" alt="bykreso film strip portfolio" /></a>
       <br /><a href="https://github.com/petrapresecki/bykreso-portfolio"><b>bykreso</b></a> ⌁ <i>a filmmaker's reel as a film strip. the page turns the colour of whatever's in frame</i>
     </td>
   </tr>
