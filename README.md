@@ -5,9 +5,9 @@
   <p>frontend engineer ✦ zagreb</p>
 
   <p>
-    <a href="https://petra-presecki.pages.dev">portfolio</a> ⌁
+    <a href="https://petrapresecki.pages.dev">portfolio</a> ⌁
     <a href="https://www.linkedin.com/in/petrapresecki">linkedin</a> ⌁
-    <a href="https://petra-presecki.pages.dev/Petra-Presecki-CV.pdf">cv</a> ⌁
+    <a href="https://petrapresecki.pages.dev/Petra-Presecki-CV.pdf">cv</a> ⌁
     <a href="mailto:petra.presecki123@gmail.com">email</a>
   </p>
 
