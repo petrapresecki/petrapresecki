@@ -1,0 +1,705 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Petra Presečki</title>
+<meta name="description" content="Petra Presečki, frontend engineer in Zagreb. I build the foundations other people build on: design systems, product flows, SDKs and AI tooling." />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,100..900&family=Instrument+Serif:ital@0;1&family=UnifrakturMaguntia&family=Rubik+Bubbles&family=Bagel+Fat+One&family=Rozha+One&family=Pacifico&family=Playfair+Display:ital,wght@1,700&family=Caveat+Brush&family=Rubik:wght@800&family=Fredoka:wght@700&family=JetBrains+Mono:wght@600&display=swap" />
+<style>
+:root{
+  --paper:#fff; --ink:#000; --text:#222; --muted:#666; --rule:#d7d7d7; --soft:#f5f5f3;
+  --pink:#ff4fb4; --hot:#ff2d87; --blue:#1c22ff; --green:#46c96b; --violet:#a68cff;
+  --sans:"Archivo","Arial Narrow",sans-serif;
+  --serif:"Instrument Serif",Georgia,serif;
+  --black:"UnifrakturMaguntia",serif;
+  --fs-body:clamp(17px,1.3vw,20px);
+  --fs-tag:clamp(16px,1.6vw,25px);
+  --fs-small:clamp(12px,.9vw,14px);
+  --gut:clamp(16px,2.8vw,44px);
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:20px}
+html,body{margin:0;background:var(--paper);color:var(--ink)}
+body{font-family:var(--sans);font-stretch:62%;font-weight:600;letter-spacing:-.04em;overflow-x:hidden}
+a{color:inherit}
+:focus-visible{outline:2px solid var(--pink);outline-offset:3px}
+::selection{background:var(--pink);color:#fff}
+
+/* readable copy: wider + lighter than the display type */
+.copy{font-stretch:82%;font-weight:500;letter-spacing:-.012em;line-height:1.45;color:var(--text);font-size:var(--fs-body)}
+.copy p{margin:0 0 .8em}
+.copy strong{font-weight:650;color:var(--ink)}
+.copy a{text-decoration:underline;text-decoration-thickness:1px;text-underline-offset:3px}
+.copy a:hover{color:var(--pink)}
+
+.tag{display:inline-block;background:var(--ink);color:#fff;font-size:var(--fs-tag);letter-spacing:-.045em;word-spacing:.18em;white-space:nowrap;padding:.3em .9em .32em;font-weight:500;line-height:1;text-decoration:none;transition:background .2s}
+a.tag:hover{background:var(--pink)}
+.label{font-size:var(--fs-small);text-transform:uppercase;letter-spacing:-.02em;font-weight:600;margin:0 0 .5em}
+.serif{font-family:var(--serif);font-style:italic;font-weight:400;letter-spacing:0}
+.city{font-family:var(--black);font-weight:400;letter-spacing:0;font-size:1.1em}
+
+/* ───────── hero (the original composition) ───────── */
+.stage{position:relative;height:100dvh;min-height:680px;overflow:hidden}
+.name{position:absolute;z-index:3;top:3.6%;left:2.6%;right:2.6%;height:23%;margin:0;display:flex;justify-content:space-between;align-items:flex-end}
+.name .word{display:flex;align-items:flex-end}
+.name .space{flex:0 0 2.5%}
+.glyph-host{display:block;flex:none;height:100%}
+.name svg.glyph{display:block;width:100%;height:100%;overflow:visible;cursor:default;transition:transform .35s cubic-bezier(.34,1.56,.64,1)}
+.name svg.glyph:hover{transform:rotate(-4deg) scale(1.04)}
+.links{position:absolute;z-index:4;top:30.6%;left:2.9%;display:flex;gap:.45em;font-size:var(--fs-tag);font-weight:500;letter-spacing:-.03em}
+.links a{text-decoration:none;border-bottom:1.5px solid var(--ink);line-height:1.15;padding-bottom:1px}
+.links a:hover{color:var(--pink);border-color:var(--pink)}
+.intro{position:absolute;z-index:4;top:37%;left:3%;width:36%;margin:0;text-indent:3.2em}
+.intro .handle{font-family:var(--serif);font-style:italic;font-weight:400;letter-spacing:0;font-size:1.15em;text-decoration:none}
+.stage .tag{position:absolute;z-index:5}
+.t-offer{top:63%;left:9%}
+.t-work{top:75%;left:21%}
+.t-before{top:44%;left:77%}
+.t-side{top:57%;left:83%}
+.t-contact{top:79%;left:68.5%}
+.ascii{position:absolute;z-index:1;pointer-events:none}
+.ascii-star{width:30%;height:50%;top:50%;left:30%}
+.ascii-chain{width:36%;height:42%;top:-2%;left:64%}
+.ascii-cursor{width:22%;height:46%;top:47%;left:63%}
+.pill{position:absolute;z-index:6;bottom:3%;left:50%;transform:translateX(-50%);white-space:nowrap;font-family:var(--serif);font-style:italic;font-weight:400;letter-spacing:0;font-size:clamp(14px,1.1vw,17px);background:#ffe4f6eb;border:1px solid #f3c4e4;border-radius:8px;padding:.5em 1.1em;box-shadow:0 0 22px #ff8cd259;text-decoration:none;animation:pill-in .75s cubic-bezier(.34,1.56,.64,1) .3s both}
+.pill:hover{background:#ffd3ef}
+.pill .dot{display:inline-block;width:.55em;height:.55em;border-radius:50%;background:var(--green);margin-right:.55em;box-shadow:0 0 0 0 #46c96b88;animation:ping 2s infinite}
+.pill svg{position:absolute;width:14px;height:14px;animation:twinkle 2.4s ease-in-out infinite}
+.pill .s1{top:-7px;left:-7px}.pill .s2{top:-7px;right:-7px;animation-delay:-.8s}.pill .s3{bottom:-7px;left:-7px;animation-delay:-1.4s}.pill .s4{bottom:-7px;right:-7px;animation-delay:-.4s}
+@keyframes pill-in{0%{opacity:0;transform:translateX(-50%) translateY(36px) scale(.7) rotate(-3deg)}60%{opacity:1}to{opacity:1;transform:translateX(-50%)}}
+@keyframes twinkle{0%,to{transform:scale(1) rotate(0)}50%{transform:scale(.55) rotate(45deg)}}
+@keyframes ping{0%{box-shadow:0 0 0 0 #46c96b88}80%,to{box-shadow:0 0 0 .6em #46c96b00}}
+.mail{position:absolute;z-index:4;bottom:2%;left:2.6%;font-size:var(--fs-body);font-weight:500;text-decoration:none}
+.mail:hover{color:var(--pink)}
+.clock{position:absolute;z-index:4;bottom:2%;right:2.4%;font-size:var(--fs-tag);font-weight:300;letter-spacing:-.02em;font-variant-numeric:tabular-nums}
+
+/* ───────── sections ───────── */
+.sec{padding:clamp(64px,9vw,140px) var(--gut) 0;position:relative}
+.sec-head{display:grid;grid-template-columns:repeat(12,1fr);gap:0 24px;align-items:end;border-bottom:1px solid var(--ink);padding-bottom:16px;margin-bottom:clamp(28px,3.5vw,52px)}
+.sec-head .tag{grid-column:1/4;justify-self:start;align-self:start}
+.sec-head h2{grid-column:4/13;margin:0;font-size:clamp(40px,6.4vw,104px);line-height:.88;font-weight:700;letter-spacing:-.045em}
+.sec-head h2 .serif{font-weight:400;letter-spacing:-.01em}
+.sec-head h2 .pinkish{color:var(--hot)}
+.lede{display:grid;grid-template-columns:repeat(12,1fr);gap:0 24px;margin-bottom:clamp(28px,3.5vw,52px)}
+.lede > div{grid-column:4/11}
+.lede p{font-size:clamp(19px,1.6vw,25px);line-height:1.35}
+
+/* stats */
+.stats{display:grid;grid-template-columns:repeat(5,1fr);border-top:1px solid var(--rule);border-bottom:1px solid var(--rule);margin:0 var(--gut)}
+.stat{padding:22px 18px 22px 0;border-right:1px solid var(--rule)}
+.stat + .stat{padding-left:18px}
+.stat:last-child{border-right:0}
+.stat b{display:block;font-size:clamp(44px,5.2vw,86px);line-height:.9;font-weight:800;letter-spacing:-.05em}
+.stat b small{font-size:.45em;font-weight:600;letter-spacing:-.03em;margin-left:.08em}
+.stat span{display:block;margin-top:.6em;font-size:clamp(15px,1.15vw,18px);font-stretch:82%;font-weight:500;letter-spacing:-.012em;line-height:1.35;color:var(--text)}
+.stat:nth-child(1) b{color:var(--blue)}
+.stat:nth-child(2) b{color:var(--hot)}
+.stat:nth-child(3) b{font-family:var(--serif);font-style:italic;font-weight:400;letter-spacing:-.02em}
+.stat:nth-child(4) b{color:var(--violet)}
+.stat:nth-child(5) b{color:var(--green)}
+
+/* offer */
+.offers{display:grid;grid-template-columns:repeat(3,1fr);gap:0;border-top:1px solid var(--rule)}
+.offer{padding:26px 26px 30px 0;border-bottom:1px solid var(--rule);position:relative}
+.offer:not(:nth-child(3n+1)){padding-left:26px;border-left:1px solid var(--rule)}
+.offer .n{font-size:var(--fs-small);font-weight:600;color:var(--muted)}
+.offer h3{margin:.35em 0 .45em;font-size:clamp(26px,2.4vw,38px);line-height:.95;font-weight:700;letter-spacing:-.04em}
+.offer .proof{display:block;margin-top:.9em;font-size:var(--fs-small);font-weight:600;letter-spacing:-.02em;text-transform:uppercase;color:var(--hot)}
+.offer .proof::before{content:"★ ";}
+
+/* work stories */
+.story{display:grid;grid-template-columns:repeat(12,1fr);gap:0 24px;padding:clamp(28px,3.4vw,52px) 0;border-bottom:1px solid var(--rule)}
+.story:first-of-type{padding-top:0}
+.story-side{grid-column:1/4;position:sticky;top:24px;align-self:start}
+.story-num{font-size:clamp(70px,9vw,150px);line-height:.8;font-weight:800;letter-spacing:-.06em}
+.story:nth-of-type(1) .story-num{color:var(--blue)}
+.story:nth-of-type(2) .story-num{font-family:var(--serif);font-style:italic;font-weight:400;color:var(--hot)}
+.story:nth-of-type(3) .story-num{color:var(--violet);-webkit-text-stroke:3px var(--ink);paint-order:stroke}
+.story:nth-of-type(4) .story-num{font-family:"Pacifico",cursive;letter-spacing:0;font-size:clamp(56px,7vw,116px);color:var(--green)}
+.own{display:inline-block;margin-top:14px;background:var(--pink);color:#fff;font-size:var(--fs-small);font-weight:600;text-transform:uppercase;letter-spacing:-.01em;padding:.35em .7em}
+.when{display:block;margin-top:8px;font-size:var(--fs-small);color:var(--muted);text-transform:uppercase}
+.story-main{grid-column:4/13}
+.story-main h3{margin:0 0 .5em;font-size:clamp(32px,3.6vw,60px);line-height:.92;font-weight:700;letter-spacing:-.045em;max-width:16em}
+.beats{display:grid;grid-template-columns:repeat(3,1fr);gap:26px;margin-top:8px}
+.beat .label{display:flex;align-items:center;gap:.45em}
+.beat .label i{font-style:normal;display:inline-grid;place-items:center;width:1.5em;height:1.5em;border-radius:50%;background:var(--ink);color:#fff;font-size:.85em}
+.beat:nth-child(2) .label i{background:var(--pink)}
+.beat:nth-child(3) .label i{background:var(--green)}
+.beat ul{margin:0;padding:0;list-style:none}
+.beat li{padding-left:1em;position:relative;margin-bottom:.45em}
+.beat li::before{content:"✦";position:absolute;left:0;top:.05em;font-size:.7em;color:var(--pink)}
+.story .link{display:inline-block;margin-top:12px;font-size:var(--fs-body);font-weight:500;text-decoration:none;border-bottom:1.5px solid var(--ink)}
+.story .link:hover{color:var(--pink);border-color:var(--pink)}
+details.eng{margin-top:22px;border:1px dashed #bbb;background:var(--soft)}
+details.eng summary{cursor:pointer;list-style:none;padding:.7em 1em;font-size:var(--fs-small);font-weight:600;text-transform:uppercase;letter-spacing:-.01em;font-family:"JetBrains Mono",monospace;font-stretch:100%}
+details.eng summary::-webkit-details-marker{display:none}
+details.eng summary::before{content:"+ ";color:var(--pink)}
+details.eng[open] summary::before{content:"− "}
+details.eng summary:hover{color:var(--pink)}
+details.eng .eng-body{padding:0 1em 1em;columns:2;column-gap:28px;font-size:clamp(15px,1.05vw,17px)}
+details.eng .eng-body div{break-inside:avoid;margin-bottom:.9em}
+details.eng ul{margin:0;padding-left:1.1em}
+details.eng li{margin-bottom:.35em}
+
+/* timeline */
+.path{display:grid;grid-template-columns:repeat(5,1fr);border-top:1px solid var(--ink)}
+.step{padding:18px 18px 0 0;position:relative}
+.step::before{content:"";position:absolute;top:-6px;left:0;width:11px;height:11px;border-radius:50%;background:var(--ink)}
+.step:last-child::before{background:var(--green);box-shadow:0 0 0 4px #46c96b33}
+.step .yr{font-size:clamp(22px,2vw,32px);font-weight:700;letter-spacing:-.04em}
+.step p{margin:.3em 0 0;font-size:clamp(15px,1.05vw,17px)}
+
+/* clients */
+.clients{display:grid;grid-template-columns:repeat(3,1fr);gap:22px;margin-top:clamp(36px,4vw,60px)}
+.client{border:1px solid var(--ink);padding:22px 22px 24px;background:#fff;transition:transform .35s cubic-bezier(.34,1.56,.64,1),box-shadow .35s}
+.client:hover{transform:translateY(-4px) rotate(-.6deg);box-shadow:6px 6px 0 var(--ink)}
+.client .meta{display:flex;justify-content:space-between;font-size:var(--fs-small);text-transform:uppercase;color:var(--muted);font-weight:600}
+.client h3{margin:.25em 0 .35em;font-size:clamp(30px,2.8vw,46px);line-height:.95;font-weight:700;letter-spacing:-.045em}
+.client:nth-child(1) h3{font-family:"Rozha One",serif;font-weight:400;letter-spacing:-.01em}
+.client:nth-child(2) h3{font-family:"Fredoka",sans-serif;letter-spacing:-.02em;color:var(--blue)}
+.client:nth-child(3) h3{font-family:"Playfair Display",serif;font-style:italic;letter-spacing:-.01em;color:var(--hot)}
+.client p{margin:0 0 .6em}
+.practice{display:grid;grid-template-columns:repeat(12,1fr);gap:0 24px;margin-top:clamp(36px,4vw,60px)}
+.practice > .label{grid-column:1/4}
+.practice ul{grid-column:4/13;margin:0;padding:0;list-style:none;columns:2;column-gap:28px}
+.practice li{break-inside:avoid;padding:.55em 0 .55em 1.2em;border-top:1px solid var(--rule);position:relative}
+.practice li::before{content:"✦";position:absolute;left:0;color:var(--pink);font-size:.75em;top:.85em}
+
+/* stack */
+.stack{display:grid;grid-template-columns:repeat(5,1fr);gap:24px}
+.stack ul{margin:0;padding:0;list-style:none;font-size:clamp(19px,1.6vw,26px);line-height:1.3;font-weight:600}
+.stack .label{padding-bottom:.5em;border-bottom:1px solid var(--rule);margin-bottom:.7em}
+
+/* side work windows */
+.wins{display:grid;grid-template-columns:repeat(4,1fr);gap:26px}
+.win{display:block;text-decoration:none;background:#f4f4f4;border:1px solid #0000002e;border-radius:10px;overflow:hidden;box-shadow:0 1px #00000014,0 22px 50px -14px #00000059;transition:transform .45s cubic-bezier(.34,1.56,.64,1)}
+.win:nth-child(odd){transform:rotate(-1.2deg)}
+.win:nth-child(even){transform:rotate(1.4deg) translateY(18px)}
+.win:hover{transform:rotate(0) scale(1.03)}
+.win .bar{display:flex;align-items:center;gap:5px;height:22px;padding:0 8px;background:linear-gradient(#ececec,#dcdcdc);border-bottom:1px solid #c9c9c9}
+.win .bar i{width:9px;height:9px;border-radius:50%;background:#ff5f57}
+.win .bar i:nth-child(2){background:#febc2e}.win .bar i:nth-child(3){background:#28c840}
+.win .bar span{flex:1;text-align:center;padding-right:30px;font-size:10px;color:#555;font-weight:500;letter-spacing:-.01em;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;font-stretch:100%}
+.win img{display:block;width:100%;aspect-ratio:16/10;object-fit:cover;object-position:top;background:#e9e9e9}
+.win .cap{background:#fff;padding:10px 12px 12px;line-height:1.25}
+.win .cap b{display:block;font-size:clamp(18px,1.4vw,22px);font-weight:700;letter-spacing:-.03em}
+.win .cap span{font-size:clamp(14px,1vw,16px)}
+.oss{margin-top:56px;font-size:var(--fs-body)}
+
+/* about */
+.about{display:grid;grid-template-columns:repeat(12,1fr);gap:0 24px}
+.about > div.copy{grid-column:4/10}
+.about > div.copy p:first-child{font-size:clamp(20px,1.7vw,27px);line-height:1.3;color:var(--ink)}
+.facts{grid-column:10/13;margin:0}
+.facts div{border-top:1px solid var(--rule);padding:.5em 0 .7em}
+.facts dt{font-size:var(--fs-small);color:var(--muted);text-transform:uppercase;font-weight:600}
+.facts dd{margin:0;font-size:clamp(16px,1.2vw,19px)}
+
+/* contact */
+.contact{padding:clamp(80px,11vw,170px) var(--gut) 28px;position:relative;overflow:hidden}
+.contact .ask{font-size:clamp(20px,1.8vw,28px);max-width:30em}
+.big-mail{display:block;margin:.3em 0 .4em;font-size:clamp(34px,7.4vw,124px);line-height:.95;font-weight:700;letter-spacing:-.055em;text-decoration:none;word-break:break-all}
+.big-mail:hover{color:var(--pink)}
+.big-mail .serif{font-weight:400;letter-spacing:-.02em}
+.contact .row{display:flex;flex-wrap:wrap;gap:14px}
+.foot{display:flex;justify-content:space-between;gap:12px;margin-top:clamp(60px,7vw,110px);padding-top:14px;border-top:1px solid var(--rule);font-size:var(--fs-small);text-transform:uppercase;font-weight:600}
+
+/* reveal */
+.rv{opacity:0;transform:translateY(24px);transition:opacity .8s,transform .8s cubic-bezier(.2,.7,.2,1)}
+.rv.in{opacity:1;transform:none}
+
+/* ───────── responsive ───────── */
+@media (max-width:1100px){
+  .offers{grid-template-columns:1fr 1fr}
+  .offer:not(:nth-child(3n+1)){padding-left:0;border-left:0}
+  .offer:nth-child(even){padding-left:22px;border-left:1px solid var(--rule)}
+  .stats{grid-template-columns:repeat(3,1fr)}
+  .stat:nth-child(3){border-right:0}
+  .stat:nth-child(4){padding-left:0}
+  .stat:nth-child(n+4){border-top:1px solid var(--rule)}
+  .stack{grid-template-columns:repeat(3,1fr)}
+  .wins{grid-template-columns:1fr 1fr}
+  .clients{grid-template-columns:1fr 1fr}
+  .beats{grid-template-columns:1fr;gap:14px}
+  .path{grid-template-columns:repeat(3,1fr);row-gap:28px}
+}
+@media (max-width:760px){
+  .stage{height:auto;min-height:100dvh;display:flex;flex-wrap:wrap;align-content:flex-start;gap:14px 10px;padding:40px 16px 40px}
+  .name,.links,.intro,.mail,.clock,.stage .tag,.pill{position:static;width:auto;transform:none}
+  .name,.links,.intro{flex:0 0 100%}
+  .name{height:auto;flex-wrap:wrap;row-gap:20px;margin-bottom:4px}
+  .name .space{flex-basis:100%;height:0}
+  .intro{margin:6px 0 10px;text-indent:2em}
+  .stage .tag{font-size:17px}
+  .pill{position:relative;margin-top:18px;animation:none;white-space:normal}
+  .mail,.clock{flex:0 0 100%;font-size:16px;margin-top:6px}
+  .ascii{opacity:.25}
+  .ascii-star{width:90%;height:300px;top:auto;bottom:60px;left:20%}
+  .ascii-chain{width:72%;height:170px;top:6px;left:35%}
+  .ascii-cursor{display:none}
+  .sec{padding-top:72px}
+  .sec-head,.lede,.story,.practice,.about{display:block}
+  .sec-head h2{margin-top:16px}
+  .stats{grid-template-columns:1fr 1fr;margin:0 16px}
+  .stat,.stat + .stat{padding:18px 12px 18px 0;border-right:0;border-top:1px solid var(--rule)}
+  .stat:nth-child(even){padding-left:14px;border-left:1px solid var(--rule)}
+  .stat:nth-child(-n+2){border-top:0}
+  .stat:last-child{grid-column:1/-1}
+  .offers{grid-template-columns:1fr}
+  .offer,.offer:nth-child(even){padding:22px 0;border-left:0}
+  .story-side{position:static;display:flex;align-items:flex-end;flex-wrap:wrap;gap:4px 14px;margin-bottom:16px}
+  .story-num{font-size:72px}
+  .own{margin-top:0}
+  .when{flex-basis:100%;margin-top:0}
+  details.eng .eng-body{columns:1}
+  .path{grid-template-columns:1fr 1fr}
+  .clients{grid-template-columns:1fr}
+  .practice ul{columns:1;margin-top:10px}
+  .stack{grid-template-columns:1fr 1fr}
+  .wins{grid-template-columns:1fr;gap:34px}
+  .win:nth-child(even){transform:rotate(1.4deg)}
+  .facts{margin-top:20px}
+  .foot{flex-direction:column}
+}
+@media (prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto}
+  .rv{opacity:1;transform:none;transition:none}
+  .pill,.pill svg,.pill .dot{animation:none}
+  .name svg.glyph,.win,.client{transition:none}
+}
+</style>
+</head>
+<body>
+
+<!-- ═════════ HERO ═════════ -->
+<header class="stage" id="top">
+  <h1 class="name" aria-label="Petra Presečki"><span class="word"><span class="glyph-host" style="aspect-ratio:138.4/172.0"><svg class="glyph" aria-hidden="true" viewBox="2.4 -160 138.4 172"><defs></defs><g><text x="0" y="0" font-family="&quot;Rubik Bubbles&quot;" font-size="204" font-weight="400" font-style="normal" fill="#8f8a9c">P</text></g></svg></span><span class="glyph-host" style="aspect-ratio:118.9/172.0"><svg class="glyph" aria-hidden="true" viewBox="-3.6 -160 118.9 172"><defs></defs><g><text x="0" y="0" font-family="&quot;Fredoka&quot;" font-size="210" font-weight="700" font-style="normal" fill="#e4ecf7" stroke="#86b4ea" stroke-width="3">e</text><rect x="0" y="-205" width="111.71875" height="255" fill="none" stroke="#2f7bf5" stroke-width="1.6"></rect><rect x="-7" y="-212" width="14" height="14" fill="#2f7bf5" stroke="#fff" stroke-width="2"></rect><rect x="-7" y="-84.5" width="14" height="14" fill="#2f7bf5" stroke="#fff" stroke-width="2"></rect><rect x="-7" y="43" width="14" height="14" fill="#2f7bf5" stroke="#fff" stroke-width="2"></rect><rect x="48.859375" y="-212" width="14" height="14" fill="#2f7bf5" stroke="#fff" stroke-width="2"></rect><rect x="48.859375" y="43" width="14" height="14" fill="#2f7bf5" stroke="#fff" stroke-width="2"></rect><rect x="104.71875" y="-212" width="14" height="14" fill="#2f7bf5" stroke="#fff" stroke-width="2"></rect><rect x="104.71875" y="-84.5" width="14" height="14" fill="#2f7bf5" stroke="#fff" stroke-width="2"></rect><rect x="104.71875" y="43" width="14" height="14" fill="#2f7bf5" stroke="#fff" stroke-width="2"></rect><path d="M27.9 -229.0L30.0 -223.9L35.5 -223.5L31.4 -219.9L32.6 -214.5L27.9 -217.4L23.2 -214.5L24.5 -219.9L20.3 -223.5L25.8 -223.9Z" fill="#ff4fb4"></path><path d="M83.8 -229.0L85.9 -223.9L91.4 -223.5L87.2 -219.9L88.5 -214.5L83.8 -217.4L79.1 -214.5L80.4 -219.9L76.2 -223.5L81.7 -223.9Z" fill="#ff4fb4"></path><path d="M0.0 -136.5L2.1 -131.4L7.6 -131.0L3.4 -127.4L4.7 -122.0L0.0 -124.9L-4.7 -122.0L-3.4 -127.4L-7.6 -131.0L-2.1 -131.4Z" fill="#ff4fb4"></path><path d="M111.7 -34.5L113.8 -29.4L119.3 -29.0L115.1 -25.4L116.4 -20.0L111.7 -22.9L107.0 -20.0L108.3 -25.4L104.1 -29.0L109.6 -29.4Z" fill="#ff4fb4"></path><path d="M33.5 58.0L35.6 63.1L41.1 63.5L36.9 67.1L38.2 72.5L33.5 69.6L28.8 72.5L30.1 67.1L25.9 63.5L31.4 63.1Z" fill="#ff4fb4"></path><path d="M78.2 58.0L80.3 63.1L85.8 63.5L81.6 67.1L82.9 72.5L78.2 69.6L73.5 72.5L74.8 67.1L70.6 63.5L76.1 63.1Z" fill="#ff4fb4"></path></g></svg></span><span class="glyph-host" style="aspect-ratio:117.5/172.0"><svg class="glyph" aria-hidden="true" viewBox="2.4 -160 117.5 172"><defs></defs><g><text x="0" y="0" font-family="&quot;Rozha One&quot;" font-size="216" font-weight="400" font-style="normal" fill="#3f4c45">T</text></g></svg></span><span class="glyph-host" style="aspect-ratio:123.2/172.0"><svg class="glyph" aria-hidden="true" viewBox="2.4 -160 123.2 172"><defs><linearGradient id="ch4" x1="0" y1="0" x2="0.25" y2="1"><stop offset="0" stop-color="#1d1d1f"></stop><stop offset="0.18" stop-color="#f7f7f7"></stop><stop offset="0.32" stop-color="#9fb9ff"></stop><stop offset="0.46" stop-color="#111"></stop><stop offset="0.6" stop-color="#ffffff"></stop><stop offset="0.72" stop-color="#ff9fe0"></stop><stop offset="0.86" stop-color="#202022"></stop><stop offset="1" stop-color="#d9d9d9"></stop></linearGradient><linearGradient id="rb4" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#ff5fd2"></stop><stop offset="0.35" stop-color="#ffd84f"></stop><stop offset="0.65" stop-color="#5ff0b5"></stop><stop offset="1" stop-color="#6a7bff"></stop></linearGradient><filter id="bl4" x="-40%" y="-40%" width="180%" height="180%"><feGaussianBlur stdDeviation="9"></feGaussianBlur></filter></defs><g><text x="0" y="0" font-family="&quot;Bagel Fat One&quot;" font-size="200" font-weight="400" font-style="normal" fill="url(#rb4)" filter="url(#bl4)" opacity="0.85">R</text><text x="0" y="0" font-family="&quot;Bagel Fat One&quot;" font-size="200" font-weight="400" font-style="normal" fill="url(#ch4)" stroke="#111" stroke-width="1.5">R</text></g></svg></span><span class="glyph-host" style="aspect-ratio:106.2/172.0"><svg class="glyph" aria-hidden="true" viewBox="2.4 -160 106.2 172"><defs><pattern id="rp5" width="12" height="12" patternUnits="userSpaceOnUse" patternTransform="rotate(40)"><rect width="12" height="12" fill="#7a4a24"></rect><rect width="6" height="12" fill="#c98e55"></rect><rect x="1" width="1.6" height="12" fill="#efc28e"></rect></pattern></defs><g><text x="0" y="0" font-family="&quot;Pacifico&quot;" font-size="184" font-weight="400" font-style="normal" fill="url(#rp5)" stroke="#3a2310" stroke-width="2.2">a</text></g></svg></span></span><span class="space"></span><span class="word"><span class="glyph-host" style="aspect-ratio:111.2/172.0"><svg class="glyph" aria-hidden="true" viewBox="24.9 -160 111.2 172"><defs></defs><g><circle cx="34.5" cy="-139.5" r="12.0" fill="#1c22ff"></circle><circle cx="57.5" cy="-139.5" r="12.0" fill="#1c22ff"></circle><circle cx="80.5" cy="-139.5" r="12.0" fill="#1c22ff"></circle><circle cx="34.5" cy="-116.5" r="12.0" fill="#1c22ff"></circle><circle cx="57.5" cy="-116.5" r="12.0" fill="#1c22ff"></circle><circle cx="80.5" cy="-116.5" r="12.0" fill="#1c22ff"></circle><circle cx="103.5" cy="-116.5" r="12.0" fill="#1c22ff"></circle><circle cx="126.5" cy="-116.5" r="12.0" fill="#1c22ff"></circle><circle cx="34.5" cy="-93.5" r="12.0" fill="#1c22ff"></circle><circle cx="103.5" cy="-93.5" r="12.0" fill="#1c22ff"></circle><circle cx="126.5" cy="-93.5" r="12.0" fill="#1c22ff"></circle><circle cx="34.5" cy="-70.5" r="12.0" fill="#1c22ff"></circle><circle cx="57.5" cy="-70.5" r="12.0" fill="#1c22ff"></circle><circle cx="80.5" cy="-70.5" r="12.0" fill="#1c22ff"></circle><circle cx="103.5" cy="-70.5" r="12.0" fill="#1c22ff"></circle><circle cx="126.5" cy="-70.5" r="12.0" fill="#1c22ff"></circle><circle cx="34.5" cy="-47.5" r="12.0" fill="#1c22ff"></circle><circle cx="57.5" cy="-47.5" r="12.0" fill="#1c22ff"></circle><circle cx="80.5" cy="-47.5" r="12.0" fill="#1c22ff"></circle><circle cx="34.5" cy="-24.5" r="12.0" fill="#1c22ff"></circle><circle cx="34.5" cy="-1.5" r="12.0" fill="#1c22ff"></circle></g></svg></span><span class="glyph-host" style="aspect-ratio:136.0/172.0"><svg class="glyph" aria-hidden="true" viewBox="2.4 -160 136.0 172"><defs></defs><g><text x="0" y="0" font-family="&quot;Rubik&quot;" font-size="200" font-weight="800" font-style="normal" fill="#33333e" stroke="#ff7fd8" stroke-width="16" paint-order="stroke" stroke-linejoin="round">R</text></g></svg></span><span class="glyph-host" style="aspect-ratio:106.9/172.0"><svg class="glyph" aria-hidden="true" viewBox="2.4 -160 106.9 172"><defs><radialGradient id="gl8" cx="0.35" cy="0.3" r="0.8"><stop offset="0" stop-color="#fffcd2"></stop><stop offset="0.32" stop-color="#d4f56a"></stop><stop offset="0.65" stop-color="#5fd68d"></stop><stop offset="1" stop-color="#3aa7ff"></stop></radialGradient><filter id="gw8" x="-30%" y="-30%" width="160%" height="160%"><feDropShadow dx="0" dy="0" stdDeviation="7" flood-color="#8fe8a6" flood-opacity="0.9"></feDropShadow></filter></defs><g><text x="0" y="0" font-family="&quot;Fredoka&quot;" font-size="210" font-weight="700" font-style="normal" fill="url(#gl8)" stroke="#fff" stroke-width="9" paint-order="stroke" stroke-linejoin="round" filter="url(#gw8)">e</text></g></svg></span><span class="glyph-host" style="aspect-ratio:108.4/172.0"><svg class="glyph" aria-hidden="true" viewBox="2.4 -160 108.4 172"><defs><pattern id="pd9" width="15" height="15" patternUnits="userSpaceOnUse"><rect width="15" height="15" fill="#a68cff"></rect><circle cx="7.5" cy="7.5" r="4.6" fill="#ff9fdc"></circle></pattern></defs><g><text x="0" y="0" font-family="&quot;Fredoka&quot;" font-size="210" font-weight="700" font-style="normal" fill="url(#pd9)" stroke="#efe6ff" stroke-width="5" paint-order="stroke" stroke-linejoin="round">S</text></g></svg></span><span class="glyph-host" style="aspect-ratio:100.2/172.0"><svg class="glyph" aria-hidden="true" viewBox="2.4 -160 100.2 172"><defs></defs><g><text x="0" y="0" font-family="&quot;Playfair Display&quot;" font-size="224.00000000000003" font-weight="700" font-style="italic" fill="#ff2d87">e</text></g></svg></span><span class="glyph-host" style="aspect-ratio:115.5/172.0"><svg class="glyph" aria-hidden="true" viewBox="2.4 -160 115.5 172"><defs></defs><g><text x="0" y="0" font-family="&quot;Rozha One&quot;" font-size="216" font-weight="400" font-style="normal" fill="#3f4c45">Č</text></g></svg></span><span class="glyph-host" style="aspect-ratio:116.0/172.0"><svg class="glyph" aria-hidden="true" viewBox="22.0 -160 116.0 172"><defs></defs><g><circle cx="30.0" cy="-130.0" r="10.4" fill="#ff4fb4"></circle><circle cx="50.0" cy="-130.0" r="10.4" fill="#ff4fb4"></circle><circle cx="90.0" cy="-130.0" r="10.4" fill="#ff4fb4"></circle><circle cx="110.0" cy="-130.0" r="10.4" fill="#ff4fb4"></circle><circle cx="30.0" cy="-110.0" r="10.4" fill="#ff4fb4"></circle><circle cx="50.0" cy="-110.0" r="10.4" fill="#ff4fb4"></circle><circle cx="70.0" cy="-110.0" r="10.4" fill="#ff4fb4"></circle><circle cx="90.0" cy="-110.0" r="10.4" fill="#ff4fb4"></circle><circle cx="110.0" cy="-110.0" r="10.4" fill="#ff4fb4"></circle><circle cx="30.0" cy="-90.0" r="10.4" fill="#ff4fb4"></circle><circle cx="50.0" cy="-90.0" r="10.4" fill="#ff4fb4"></circle><circle cx="70.0" cy="-90.0" r="10.4" fill="#ff4fb4"></circle><circle cx="90.0" cy="-90.0" r="10.4" fill="#ff4fb4"></circle><circle cx="30.0" cy="-70.0" r="10.4" fill="#ff4fb4"></circle><circle cx="50.0" cy="-70.0" r="10.4" fill="#ff4fb4"></circle><circle cx="70.0" cy="-70.0" r="10.4" fill="#ff4fb4"></circle><circle cx="90.0" cy="-70.0" r="10.4" fill="#ff4fb4"></circle><circle cx="30.0" cy="-50.0" r="10.4" fill="#ff4fb4"></circle><circle cx="50.0" cy="-50.0" r="10.4" fill="#ff4fb4"></circle><circle cx="70.0" cy="-50.0" r="10.4" fill="#ff4fb4"></circle><circle cx="90.0" cy="-50.0" r="10.4" fill="#ff4fb4"></circle><circle cx="30.0" cy="-30.0" r="10.4" fill="#ff4fb4"></circle><circle cx="50.0" cy="-30.0" r="10.4" fill="#ff4fb4"></circle><circle cx="70.0" cy="-30.0" r="10.4" fill="#ff4fb4"></circle><circle cx="90.0" cy="-30.0" r="10.4" fill="#ff4fb4"></circle><circle cx="110.0" cy="-30.0" r="10.4" fill="#ff4fb4"></circle><circle cx="30.0" cy="-10.0" r="10.4" fill="#ff4fb4"></circle><circle cx="50.0" cy="-10.0" r="10.4" fill="#ff4fb4"></circle><circle cx="90.0" cy="-10.0" r="10.4" fill="#ff4fb4"></circle><circle cx="110.0" cy="-10.0" r="10.4" fill="#ff4fb4"></circle><circle cx="130.0" cy="-10.0" r="10.4" fill="#ff4fb4"></circle></g></svg></span><span class="glyph-host" style="aspect-ratio:49.0/172.0"><svg class="glyph" aria-hidden="true" viewBox="2.4 -160 49.0 172"><defs></defs><g><text x="0" y="0" font-family="&quot;Caveat Brush&quot;" font-size="240" font-weight="400" font-style="normal" fill="#45c96a">i</text></g></svg></span></span></h1>
+  <nav class="links" aria-label="Elsewhere">
+    <a href="https://www.linkedin.com/in/petrapresecki" target="_blank" rel="noopener">LinkedIn</a>
+    <a href="https://github.com/petrapresecki" target="_blank" rel="noopener">GitHub</a>
+    <a href="https://x.com/petrapresecki" target="_blank" rel="noopener">X</a>
+  </nav>
+  <p class="intro copy">Hi, I'm Petra, a frontend engineer based in <span class="city">zagreb</span>. For five years I've built React and React Native apps. Most recently that was at Coinme (now part of Polygon), where <strong>I started the design system and led it for two years</strong>. It runs a crypto widget that other companies put inside their own apps. I like building the parts that other people build on, and I like them to look made rather than generated. I usually go by <a class="handle" href="https://x.com/petrapresecki" target="_blank" rel="noopener">petrapresecki</a>.</p>
+
+  <canvas class="ascii ascii-chain" data-shape="sparkle" aria-hidden="true"></canvas>
+  <canvas class="ascii ascii-star" data-shape="bow" aria-hidden="true"></canvas>
+  <canvas class="ascii ascii-cursor" data-shape="cursor" aria-hidden="true"></canvas>
+
+  <a class="tag t-offer" href="#offer">[WHAT I OFFER]</a>
+  <a class="tag t-work" href="#work">[WHAT I OWNED]</a>
+  <a class="tag t-before" href="#before">[BEFORE THAT]</a>
+  <a class="tag t-side" href="#side">[SIDE WORK]</a>
+  <a class="tag t-contact" href="#contact">[CONTACT ME]</a>
+
+  <a class="pill" href="#contact">
+    <svg class="s1" viewBox="0 0 20 20"><path d="M10 0L12 8L20 10L12 12L10 20L8 12L0 10L8 8Z" fill="#ff4fb4"/></svg>
+    <svg class="s2" viewBox="0 0 20 20"><path d="M10 0L12 8L20 10L12 12L10 20L8 12L0 10L8 8Z" fill="#ff4fb4"/></svg>
+    <svg class="s3" viewBox="0 0 20 20"><path d="M10 0L12 8L20 10L12 12L10 20L8 12L0 10L8 8Z" fill="#ff4fb4"/></svg>
+    <svg class="s4" viewBox="0 0 20 20"><path d="M10 0L12 8L20 10L12 12L10 20L8 12L0 10L8 8Z" fill="#ff4fb4"/></svg>
+    <span class="dot"></span>open to new teams · <b>remote</b> or Zagreb
+  </a>
+  <a class="mail" href="mailto:petra.presecki123@gmail.com">petra.presecki123@gmail.com</a>
+  <time class="clock" id="clock">&nbsp;</time>
+</header>
+
+<main>
+
+<!-- ═════════ AT A GLANCE ═════════ -->
+<section class="stats rv" aria-label="At a glance">
+  <div class="stat"><b>5<small>yrs</small></b><span>building React and React Native apps used by real customers</span></div>
+  <div class="stat"><b>2<small>yrs</small></b><span>leading the design system I founded, on iPhone, Android and web</span></div>
+  <div class="stat"><b>137</b><span>releases of that design system, shipped to partner apps</span></div>
+  <div class="stat"><b>~270</b><span>pieces of my code merged, across 11 codebases</span></div>
+  <div class="stat"><b>6<small>days</small></b><span>to take a new SDK from first line of code to its first production release</span></div>
+</section>
+
+<!-- ═════════ WHAT I OFFER ═════════ -->
+<section class="sec" id="offer">
+  <div class="sec-head rv">
+    <span class="tag">[WHAT I OFFER]</span>
+    <h2>What you get <span class="serif">with me</span> on the team</h2>
+  </div>
+  <div class="offers copy">
+    <article class="offer rv">
+      <span class="n">/01</span>
+      <h3>Foundations other people build on</h3>
+      <p>Design systems, component libraries and theming. I set them up so a whole team, and the companies it works with, can move fast without the product falling apart visually.</p>
+      <span class="proof">Founded &amp; led a design system for 2 years</span>
+    </article>
+    <article class="offer rv">
+      <span class="n">/02</span>
+      <h3>Features, start to finish</h3>
+      <p>From the designer's file to production, including what happens when things go wrong: failed checks, declined payments, bad network. I'm trusted with the parts that have to be right.</p>
+      <span class="proof">Owned identity checks &amp; ATM cash-out</span>
+    </article>
+    <article class="offer rv">
+      <span class="n">/03</span>
+      <h3>Tools other developers use</h3>
+      <p>SDKs and libraries with clear APIs and proper docs, so other teams can plug in without needing me in the room. I test their security too.</p>
+      <span class="proof">Built two partner SDKs</span>
+    </article>
+    <article class="offer rv">
+      <span class="n">/04</span>
+      <h3>A faster team, with AI</h3>
+      <p>I build Claude Code agents, commands and CI tools that take repetitive work off the team. I started using them early and showed others how. A person still reviews every change.</p>
+      <span class="proof">My commands became the team's plugin</span>
+    </article>
+    <article class="offer rv">
+      <span class="n">/05</span>
+      <h3>An eye for design</h3>
+      <p>I work directly with designers and care about the details: spacing, accessibility, how something moves. I'm happiest where frontend and design meet.</p>
+      <span class="proof">Accessible UI to WCAG standard</span>
+    </article>
+    <article class="offer rv">
+      <span class="n">/06</span>
+      <h3>Ownership</h3>
+      <p>I don't hand things off once they work. I take them from idea to release and keep looking after them: upgrades, docs, testing, and the boring parts nobody else wants.</p>
+      <span class="proof">Kept by Polygon after the acquisition</span>
+    </article>
+  </div>
+</section>
+
+<!-- ═════════ WHAT I OWNED ═════════ -->
+<section class="sec" id="work">
+  <div class="sec-head rv">
+    <span class="tag">[WHAT I OWNED]</span>
+    <h2>Coinme <span class="serif pinkish">/ Polygon Labs</span></h2>
+  </div>
+  <div class="lede copy rv"><div>
+    <p><strong>The product:</strong> a crypto widget that other companies, like fintech and wallet apps, put inside their own iPhone, Android and web apps. Each company sees it in its own colours and with its own set of features, but it is a single product underneath.</p>
+    <p>I joined in 2024 through Endava, as part of a frontend team of 7–10 people. When Polygon Labs acquired Coinme, <strong>they hired me directly</strong> in February 2026. Here are four pieces I owned or shaped, starting with the biggest.</p>
+  </div></div>
+
+  <!-- 01 -->
+  <article class="story rv">
+    <div class="story-side">
+      <div class="story-num">01</div>
+      <span class="own">I started it · I led it</span>
+      <span class="when">Design system · 2025–2026</span>
+    </div>
+    <div class="story-main copy">
+      <h3>One design system that every partner can rebrand</h3>
+      <div class="beats">
+        <div class="beat"><p class="label"><i>?</i>The problem</p><p>Every company that embeds the widget wants it to look like their own app. If each one needed custom code, the team would end up maintaining a dozen slightly different products.</p></div>
+        <div class="beat"><p class="label"><i>✎</i>What I did</p><ul>
+          <li>Started the component library on day one and looked after it for two years.</li>
+          <li>Designed how branding works: a partner sends only the colours and styles they want to change, and every screen updates. Nobody touches the code.</li>
+          <li>Built 13+ of its 34 components, including an interactive price chart you can drag your finger across.</li>
+        </ul></div>
+        <div class="beat"><p class="label"><i>★</i>What came of it</p><ul>
+          <li>Every screen of the product, on all three platforms, runs on it.</li>
+          <li>137 releases without partners ever having to fork it.</li>
+          <li>New partners get their brand through configuration, not a project.</li>
+        </ul></div>
+      </div>
+      <details class="eng"><summary>for engineers: how it works</summary><div class="eng-body">
+        <div><b>Setup.</b><ul><li>One React Native codebase rendering iOS, Android and web (react-native-web)</li><li>Tooling, Storybook, an Expo example app, the React Native 0.77 upgrade</li></ul></div>
+        <div><b>Theming.</b><ul><li>Design tokens, dark mode and a "host theme wins" deep merge, so a partner sends a partial theme</li><li>Partners override tokens, never components, which keeps the contract small and stable</li></ul></div>
+        <div><b>Components.</b><ul><li>Stacked bottom sheets, OTP input, swipeable tabs, interactive SVG price chart (Reanimated, Gesture Handler)</li><li>Separate web and native implementations where the platforms really differ, one API on top</li></ul></div>
+        <div><b>Icons.</b><ul><li>A cross-platform icon system that ships only the current platform's SVGs in each bundle</li></ul></div>
+      </div></details>
+    </div>
+  </article>
+
+  <!-- 02 -->
+  <article class="story rv">
+    <div class="story-side">
+      <div class="story-num">02</div>
+      <span class="own">I built it · I owned it</span>
+      <span class="when">Product flows · 2025–2026</span>
+    </div>
+    <div class="story-main copy">
+      <h3>The features that have to be right, like identity checks and cash</h3>
+      <div class="beats">
+        <div class="beat"><p class="label"><i>?</i>The problem</p><p>Each partner needs a different mix of features: signing up, verifying identity, buying crypto with cash, cashing out at an ATM. These features handle real money and are tightly regulated, so a mistake is expensive.</p></div>
+        <div class="beat"><p class="label"><i>✎</i>What I did</p><ul>
+          <li>Owned identity verification, including all the ways it can fail (wrong SSN, phone mismatch, declines).</li>
+          <li>Owned the extra anti-money-laundering checks for flagged users, and built most of ATM cash-out.</li>
+          <li>Wrote the crypto wallet from scratch: balances across several blockchains, sending by QR code, a live price chart.</li>
+          <li>Built four of the 18 connections that slot features into each partner's setup, including the one that stops flagged users before any transaction.</li>
+        </ul></div>
+        <div class="beat"><p class="label"><i>★</i>What came of it</p><ul>
+          <li>Live inside <strong>Trust Wallet's Cash Deposits</strong>, from the Coinme sign-in onward.</li>
+          <li>I cleared the last blockers before a major wallet partner's launch.</li>
+          <li>A small command-line tool I wrote for updating every feature at once became the team's standard.</li>
+        </ul></div>
+      </div>
+      <a class="link" href="https://trustwallet.com/blog/company/introducing-cash-deposits-on-trust-wallet-turn-cash-into-digital-money" target="_blank" rel="noopener">↗ Trust Wallet: Cash Deposits</a>
+      <details class="eng"><summary>for engineers: how it works</summary><div class="eng-body">
+        <div><b>Orchestrator.</b><ul><li>The widget reads a partner's config and mounts self-contained flow packages</li><li>Config sets defaults: amounts, landing screen, which networks show in which region</li><li>A flow never knows which partner it runs in. Everything partner-specific comes through one shared contract</li></ul></div>
+        <div><b>Safety.</b><ul><li>KYC, enhanced due diligence (AML) and ATM cash-out are explicit state machines that fail closed: anything the backend doesn't clearly confirm counts as a no</li></ul></div>
+        <div><b>Also.</b><ul><li>Cash-buy screens, tax documents, cash-location finder</li><li>A Node.js CLI that bumps every pinned flow package on matching release channels</li><li>MSW API mocking brought into Storybook and the template every new flow starts from</li></ul></div>
+      </div></details>
+    </div>
+  </article>
+
+  <!-- 03 -->
+  <article class="story rv">
+    <div class="story-side">
+      <div class="story-num">03</div>
+      <span class="own">I built it</span>
+      <span class="when">Partner SDKs · 2026</span>
+    </div>
+    <div class="story-main copy">
+      <h3>Developer kits that keep card numbers out of partners' hands</h3>
+      <div class="beats">
+        <div class="beat"><p class="label"><i>?</i>The problem</p><p>Some partners want to build their own screens but still need to collect card numbers and social security numbers. Handling that data themselves would mean heavy security audits (PCI DSS) and real risk.</p></div>
+        <div class="beat"><p class="label"><i>✎</i>What I did</p><ul>
+          <li>Built most of the card-collection SDK, for plain JavaScript, React and React Native. Sensitive fields live in a secure vault, so raw numbers never reach partner code.</li>
+          <li>Built the customer-onboarding SDK for JavaScript and React Native.</li>
+          <li>Ran the security testing on iPhone and Android, and fixed the partner security guide where it didn't match reality.</li>
+        </ul></div>
+        <div class="beat"><p class="label"><i>★</i>What came of it</p><ul>
+          <li>Partners stay out of PCI DSS scope.</li>
+          <li>The React Native onboarding SDK went from first line of code to production <strong>v1.0 in six days</strong>, packaging and CI included.</li>
+          <li>Docs written for partners and for their coding agents.</li>
+        </ul></div>
+      </div>
+      <details class="eng"><summary>for engineers: how it works</summary><div class="eng-body">
+        <div><b>Card SDK.</b><ul><li>Provider + hook API, secure fields on the vault</li><li>A form-validity registry built on useSyncExternalStore</li></ul></div>
+        <div><b>Onboarding SDK.</b><ul><li>An accessible masked SSN field in an iframe for the web</li><li>A React-free core, so Vue, Angular and vanilla JS apps can integrate</li><li>Example apps that keep secrets out of the bundle</li></ul></div>
+        <div><b>Team.</b><ul><li>A typed interface for phone verification let three engineers build its core, hooks and UI in parallel</li><li>TSDoc on every export, agent skills on the partner docs site</li></ul></div>
+      </div></details>
+    </div>
+  </article>
+
+  <!-- 04 -->
+  <article class="story rv">
+    <div class="story-side">
+      <div class="story-num">04</div>
+      <span class="own">I started it · I contributed</span>
+      <span class="when">AI agent tooling · 2026</span>
+    </div>
+    <div class="story-main copy">
+      <h3>How our team started working with AI coding agents</h3>
+      <div class="beats">
+        <div class="beat"><p class="label"><i>?</i>The problem</p><p>A team of 7–10 people across 27 codebases spent a lot of time on repeat work: reviews, tests, tickets, translations, releases.</p></div>
+        <div class="beat"><p class="label"><i>✎</i>What I did</p><ul>
+          <li>Was one of the first on the team to use Claude Code agents every day, and wrote the team's first commands and agents for reviews, tests, scaffolding and merge requests.</li>
+          <li>Built a tool that syncs missing translations automatically and flags them after every push.</li>
+          <li>Made the AI code reviewer in CI check only what changed since its last review, instead of everything.</li>
+        </ul></div>
+        <div class="beat"><p class="label"><i>★</i>What came of it</p><ul>
+          <li>My early commands grew into the team's shared plugin, now used in 12 codebases.</li>
+          <li>Most of the team's routine work moved onto it within six months.</li>
+          <li>A shared context layer I contributed to cut how much each agent has to read by 6–16×.</li>
+          <li>Nothing ships on its own: a person reviews every change.</li>
+        </ul></div>
+      </div>
+      <details class="eng"><summary>for engineers: how it works</summary><div class="eng-body">
+        <div><b>Plugin.</b><ul><li>One shared plugin marketplace enabled in 12 frontend repos: skills for tickets, shipping, reviews, scaffolding and releases, each handing work to an agent with a pinned model</li></ul></div>
+        <div><b>Context ("the spine").</b><ul><li>Tells every session how the platform's 27 repos fit together, from a hand-curated manifest and a map generated from git</li></ul></div>
+        <div><b>My pieces.</b><ul><li>Tolgee MCP integration + post-push hook, moved to least-privilege credentials when the whole org adopted it</li><li>Incremental CI reviewer: finds its last reviewed commit from a marker in the MR thread</li><li>A Figma-to-component prototype</li></ul></div>
+      </div></details>
+    </div>
+  </article>
+</section>
+
+<!-- ═════════ BEFORE THAT ═════════ -->
+<section class="sec" id="before">
+  <div class="sec-head rv">
+    <span class="tag">[BEFORE THAT]</span>
+    <h2>Endava <span class="serif">/ agency work</span></h2>
+  </div>
+  <div class="lede copy rv"><div>
+    <p>Before Coinme I spent three years at Endava (ex FIVE), building React and React Native apps for clients in fintech, hospitality and entertainment. I worked directly with their designers and backend teams, so I learned to switch domains fast and to ask the right questions early.</p>
+  </div></div>
+
+  <div class="path copy rv" aria-label="Career path">
+    <div class="step"><div class="yr">2021</div><p>Join FIVE (now Endava) as a React / React Native developer</p></div>
+    <div class="step"><div class="yr">2021–24</div><p>Client apps in fintech, hospitality and entertainment. I lead an in-house project and mentor a junior developer</p></div>
+    <div class="step"><div class="yr">Oct 2024</div><p>Placed with Coinme. I start their design system</p></div>
+    <div class="step"><div class="yr">Feb 2026</div><p>Polygon Labs acquires Coinme and hires me directly</p></div>
+    <div class="step"><div class="yr">Now</div><p>Open to a new team where I can own something</p></div>
+  </div>
+
+  <div class="clients copy">
+    <article class="client rv">
+      <div class="meta"><span>Music rights</span><span>2023–24</span></div>
+      <h3>ASCAP</h3>
+      <p>A mobile app where artists register their songs and manage royalties.</p>
+      <p><strong>My part:</strong> the 12-step registration flow and the onboarding animations.</p>
+    </article>
+    <article class="client rv">
+      <div class="meta"><span>Banking</span><span>2023</span></div>
+      <h3>Opayo</h3>
+      <p>A web payment gateway for a banking client.</p>
+      <p><strong>My part:</strong> payment forms that were fully accessible (WCAG), so anyone, including screen-reader users, can pay.</p>
+    </article>
+    <article class="client rv">
+      <div class="meta"><span>Food &amp; health</span><span>2021–22</span></div>
+      <h3>Cooking Light Diet</h3>
+      <p>A meal-planning app and its admin website, built from the ground up.</p>
+      <p><strong>My part:</strong> the content admin system for the web, and reusable components for the app.</p>
+    </article>
+  </div>
+
+  <div class="practice copy rv">
+    <p class="label">Beyond client code</p>
+    <ul>
+      <li>Set the architecture and coding standards for modular codebases shared by several developers</li>
+      <li>Led an in-house project and mentored a junior developer</li>
+      <li>Ran technical interviews and demoed work to clients</li>
+      <li>Kept unit-test coverage above 80% and bundles small with lazy loading</li>
+    </ul>
+  </div>
+</section>
+
+<!-- ═════════ STACK ═════════ -->
+<section class="sec" id="stack">
+  <div class="sec-head rv">
+    <span class="tag">[STACK]</span>
+    <h2>What I build <span class="serif">with</span></h2>
+  </div>
+  <div class="stack rv">
+    <div><p class="label">[Frontend]</p><ul><li>React</li><li>React Native</li><li>TypeScript</li><li>Next.js</li><li>Expo</li><li>react-native-web</li></ul></div>
+    <div><p class="label">[UI systems]</p><ul><li>Design tokens</li><li>Theming</li><li>Accessibility</li><li>Storybook</li><li>Tailwind</li></ul></div>
+    <div><p class="label">[Motion + 3D]</p><ul><li>Reanimated</li><li>Gesture Handler</li><li>GSAP</li><li>three.js</li><li>React Three Fiber</li></ul></div>
+    <div><p class="label">[Backend + data]</p><ul><li>Node.js</li><li>Hono</li><li>Drizzle ORM</li><li>Zod</li><li>Redux Toolkit</li><li>TanStack Query</li></ul></div>
+    <div><p class="label">[AI + tests]</p><ul><li>Claude Code</li><li>MCP servers</li><li>Agents, skills, hooks</li><li>Vitest · Jest · MSW</li><li>GitLab CI</li></ul></div>
+  </div>
+</section>
+
+<!-- ═════════ SIDE WORK ═════════ -->
+<section class="sec" id="side">
+  <div class="sec-head rv">
+    <span class="tag">[SIDE WORK]</span>
+    <h2>Sites for people <span class="serif pinkish">whose work I like</span></h2>
+  </div>
+  <div class="lede copy rv"><div>
+    <p>Outside work I design and build sites for creative people, from concept to code, and I spend way too long on how one thing moves. Every piece I like ends up in my own library, so no site starts from zero.</p>
+  </div></div>
+  <div class="wins">
+    <a class="win rv" href="https://ivapresecki.com" target="_blank" rel="noopener">
+      <div class="bar"><i></i><i></i><i></i><span>ivapresecki.com</span></div>
+      <img src="https://github.com/petrapresecki/iva-v2/raw/main/docs/preview.gif" alt="Iva's keyring portfolio" loading="lazy" />
+      <div class="cap copy"><b>Iva Presečki</b><span>A graphic designer's projects hang off a 3D keyring. Pull a charm and it opens.</span></div>
+    </a>
+    <a class="win rv" href="https://bykreso.com" target="_blank" rel="noopener">
+      <div class="bar"><i></i><i></i><i></i><span>bykreso.com</span></div>
+      <img src="https://github.com/petrapresecki/bykreso-portfolio/raw/main/docs/preview.gif" alt="bykreso film strip portfolio" loading="lazy" />
+      <div class="cap copy"><b>bykreso</b><span>A filmmaker's reel as a film strip. The page turns the colour of whatever's in frame.</span></div>
+    </a>
+    <a class="win rv" href="https://frame-score.pages.dev" target="_blank" rel="noopener">
+      <div class="bar"><i></i><i></i><i></i><span>frame-score.pages.dev</span></div>
+      <img src="https://github.com/petrapresecki/frame-score/raw/main/docs/preview.gif" alt="Frame Score" loading="lazy" />
+      <div class="cap copy"><b>Frame Score</b><span>Grade a film frame and hear it. Colours become chords.</span></div>
+    </a>
+    <a class="win rv" href="https://github.com/petrapresecki/creative-kit" target="_blank" rel="noopener">
+      <div class="bar"><i></i><i></i><i></i><span>github.com/petrapresecki/creative-kit</span></div>
+      <img src="https://github.com/petrapresecki/creative-kit/raw/dev/docs/preview.gif" alt="creative-kit showcase" loading="lazy" />
+      <div class="cap copy"><b>creative-kit</b><span>The blocks, themes and inspiration I start every site from.</span></div>
+    </a>
+  </div>
+  <p class="oss copy rv">★ Also in open source: a merged <a href="https://github.com/PostHog/posthog-js/pull/5390" target="_blank" rel="noopener">React Native error-tracking change</a> in PostHog's posthog-js.</p>
+</section>
+
+<!-- ═════════ ABOUT ═════════ -->
+<section class="sec" id="about">
+  <div class="sec-head rv">
+    <span class="tag">[ABOUT]</span>
+    <h2>The human <span class="serif">bit</span></h2>
+  </div>
+  <div class="about rv">
+    <div class="copy">
+      <p>Frontend is where I'm happiest, and the closer it gets to design, the better.</p>
+      <p>I've been deep in Claude Code for a while. Most of my day runs through it, along with an ever-growing collection of agents and tools I've built along the way.</p>
+      <p>Away from the screen it's music and movies, usually some old Criterion film I'll try to get you to watch too.</p>
+    </div>
+    <dl class="facts copy">
+      <div><dt>Based</dt><dd>Zagreb, Croatia</dd></div>
+      <div><dt>Works</dt><dd>Remote, CET</dd></div>
+      <div><dt>Studied</dt><dd>BSc Computer Science, FER Zagreb</dd></div>
+      <div><dt>Languages</dt><dd>English, Croatian</dd></div>
+    </dl>
+  </div>
+</section>
+
+</main>
+
+<!-- ═════════ CONTACT ═════════ -->
+<footer class="contact" id="contact">
+  <canvas class="ascii" data-shape="sparkle" aria-hidden="true" style="width:32%;height:80%;top:6%;right:2%;opacity:.5"></canvas>
+  <span class="tag">[CONTACT ME]</span>
+  <p class="ask copy" style="margin-top:28px">Looking for someone to own your design system, a tricky product flow, or your team's AI tooling? Say hi.</p>
+  <a class="big-mail" href="mailto:petra.presecki123@gmail.com">petra.presecki123<span class="serif">@</span>gmail.com</a>
+  <div class="row">
+    <a class="tag" href="https://petrapresecki.pages.dev/Petra-Presecki-CV.pdf" target="_blank" rel="noopener">[CV ↓]</a>
+    <a class="tag" href="https://www.linkedin.com/in/petrapresecki" target="_blank" rel="noopener">[LINKEDIN]</a>
+    <a class="tag" href="https://github.com/petrapresecki" target="_blank" rel="noopener">[GITHUB]</a>
+    <a class="tag" href="#top">[BACK UP ↑]</a>
+  </div>
+  <div class="foot"><span>Petra Presečki · frontend engineer · Zagreb</span><span>Designed and built by me</span></div>
+</footer>
+
+<script>
+// fit the wordmark to the available width (one line on desktop, one word per line on phones)
+(function(){
+  const name=document.querySelector('.name');if(!name)return;
+  const words=[...name.querySelectorAll('.word')];
+  const ratio=w=>[...w.querySelectorAll('.glyph-host')].reduce((s,g)=>{const [a,b]=g.style.aspectRatio.split('/').map(parseFloat);return s+a/b},0);
+  function fit(){
+    const W=name.clientWidth, mobile=innerWidth<=760;
+    if(mobile){words.forEach(w=>{w.style.height=Math.min(120,W/ratio(w))+'px'})}
+    else{const total=words.reduce((s,w)=>s+ratio(w),0);const h=Math.min(name.parentElement.clientHeight*.23,(W*.97)/total);words.forEach(w=>w.style.height=h+'px')}
+  }
+  fit();addEventListener('resize',fit);
+})();
+
+// clock (Zagreb time, like the original)
+(function(){
+  const el=document.getElementById('clock');
+  const f=new Intl.DateTimeFormat('en-US',{weekday:'short',hour:'2-digit',minute:'2-digit',second:'2-digit',timeZone:'Europe/Zagreb'});
+  const tick=()=>{el.textContent=f.format(new Date()).replace(',','')};
+  tick();setInterval(tick,1000);
+})();
+
+// reveal on scroll
+(function(){
+  const els=document.querySelectorAll('.rv');
+  if(!('IntersectionObserver' in window)){els.forEach(e=>e.classList.add('in'));return}
+  const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}}),{threshold:.12,rootMargin:'0px 0px -40px 0px'});
+  els.forEach(e=>io.observe(e));
+})();
+
+// ASCII shapes: a shape is drawn into a mask, then filled with flickering code characters
+(function(){
+  const CH='<>{}[]()/\\|$*+=;:!~^%#&?';
+  const reduce=matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const shapes={
+    sparkle(c,w,h){const cx=w/2,cy=h/2,R=Math.min(w,h)*.48,r=R*.34;c.beginPath();for(let i=0;i<8;i++){const a=i*Math.PI/4-Math.PI/2,rr=i%2?r:R;c.lineTo(cx+Math.cos(a)*rr,cy+Math.sin(a)*rr)}c.closePath();c.fill();
+      const s=R*.28,x=cx+R*.62,y=cy-R*.62;c.beginPath();for(let i=0;i<8;i++){const a=i*Math.PI/4-Math.PI/2,rr=i%2?s*.34:s;c.lineTo(x+Math.cos(a)*rr,y+Math.sin(a)*rr)}c.closePath();c.fill()},
+    bow(c,w,h){const cx=w/2,cy=h*.36;c.beginPath();c.moveTo(cx,cy);c.bezierCurveTo(cx-w*.2,cy-h*.36,cx-w*.56,cy-h*.18,cx-w*.46,cy+h*.06);c.bezierCurveTo(cx-w*.38,cy+h*.24,cx-w*.12,cy+h*.12,cx,cy);c.fill();
+      c.beginPath();c.moveTo(cx,cy);c.bezierCurveTo(cx+w*.2,cy-h*.36,cx+w*.56,cy-h*.18,cx+w*.46,cy+h*.06);c.bezierCurveTo(cx+w*.38,cy+h*.24,cx+w*.12,cy+h*.12,cx,cy);c.fill();
+      c.beginPath();c.ellipse(cx,cy,w*.07,h*.08,0,0,7);c.fill();
+      c.beginPath();c.moveTo(cx-w*.03,cy+h*.04);c.lineTo(cx-w*.24,cy+h*.6);c.lineTo(cx-w*.14,cy+h*.56);c.lineTo(cx-w*.1,cy+h*.64);c.lineTo(cx+w*.02,cy+h*.06);c.fill();
+      c.beginPath();c.moveTo(cx+w*.03,cy+h*.04);c.lineTo(cx+w*.24,cy+h*.6);c.lineTo(cx+w*.14,cy+h*.56);c.lineTo(cx+w*.1,cy+h*.64);c.lineTo(cx-w*.02,cy+h*.06);c.fill()},
+    cursor(c,w,h){const s=Math.min(w/.62,h);const x=(w-s*.62)/2,y=(h-s)/2;const p=[[0,0],[0,.78],[.18,.62],[.32,.95],[.44,.9],[.3,.58],[.56,.58]];c.beginPath();p.forEach(([a,b],i)=>c[i?'lineTo':'moveTo'](x+a*s,y+b*s));c.closePath();c.fill()}
+  };
+  document.querySelectorAll('canvas.ascii').forEach(cv=>{
+    const draw=shapes[cv.dataset.shape];if(!draw)return;
+    let cells=[],cols=0,rows=0,cw=0,chh=0,ctx;
+    function setup(){
+      const r=cv.getBoundingClientRect();if(!r.width||!r.height)return;
+      const dpr=Math.min(devicePixelRatio||1,2);
+      cv.width=r.width*dpr;cv.height=r.height*dpr;ctx=cv.getContext('2d');ctx.setTransform(dpr,0,0,dpr,0,0);
+      const fs=Math.max(9,Math.min(13,r.width/40));cw=fs*.62;chh=fs*1.05;
+      cols=Math.floor(r.width/cw);rows=Math.floor(r.height/chh);
+      const m=document.createElement('canvas');m.width=cols;m.height=rows;const mc=m.getContext('2d');mc.fillStyle='#000';mc.scale(1,cw/chh);draw(mc,cols,rows*chh/cw);
+      const d=mc.getImageData(0,0,cols,rows).data;cells=[];
+      for(let y=0;y<rows;y++)for(let x=0;x<cols;x++){const a=d[(y*cols+x)*4+3];if(a>90&&Math.random()>.06)cells.push([x,y,CH[Math.random()*CH.length|0]])}
+      ctx.font=`600 ${fs}px "JetBrains Mono",monospace`;ctx.textBaseline='top';render();
+    }
+    function render(){const r=cv.getBoundingClientRect();ctx.clearRect(0,0,r.width,r.height);ctx.fillStyle='#000';for(const [x,y,ch] of cells)ctx.fillText(ch,x*cw,y*chh)}
+    setup();
+    let t;addEventListener('resize',()=>{clearTimeout(t);t=setTimeout(setup,150)});
+    document.fonts&&document.fonts.ready.then(setup);
+    if(!reduce)setInterval(()=>{if(!cells.length)return;for(let i=0;i<cells.length*.05;i++){cells[Math.random()*cells.length|0][2]=CH[Math.random()*CH.length|0]}render()},140);
+  });
+})();
+</script>
+</body>
+</html>
