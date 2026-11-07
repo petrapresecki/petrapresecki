@@ -19,7 +19,7 @@ _hi, i'm petra. mostly i make things:_
 
 ✦ _apps people use, on the web and on their phones_  
 ✦ _onchain stuff: on- and off-ramps, a multi-chain wallet, stablecoin payments and the kyc flows around them_  
-✦ _the boring-but-important bits behind them, like apis, sdks and data pipelines_  
+✦ _the bits other developers plug in: sdks, cli tools and docs_  
 ✦ _agents and claude code tools that do the repetitive parts for me_
 
 _and on the side, websites for people whose work i like,_  
@@ -55,6 +55,6 @@ _also: a merged [react native error tracking change](https://github.com/PostHog/
 ---
 
 _usually_  
-_`typescript` ✎ `react` ✎ `react native` ✎ `node` ✎ `claude code` ✎ `mcp` ✎ `three.js`_
+_`typescript` ✎ `react` ✎ `react native` ✎ `next.js` ✎ `claude code` ✎ `mcp` ✎ `gsap` ✎ `three.js`_
 
 _say hi at [petra.presecki123@gmail.com](mailto:petra.presecki123@gmail.com)_
