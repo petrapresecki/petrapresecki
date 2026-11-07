@@ -2,7 +2,7 @@
 
   <h1>petra presečki</h1>
 
-  <p>frontend engineer ✦ zagreb</p>
+  <p>product engineer ✦ web, mobile, onchain &amp; agents ✦ zagreb</p>
 
   <p>
     <a href="https://petrapresecki.pages.dev">portfolio</a> ⌁
@@ -15,17 +15,15 @@
 
 ---
 
-_hi, i'm petra_
+_hi, i'm petra. mostly i make things:_
 
-_i've been building react and react native apps for about five years_  
-_the last two on a crypto widget that other companies put inside their own apps, on ios, android and web_  
-_i started its design system and looked after it the whole time_
+✦ _apps people use, on the web and on their phones_  
+✦ _onchain stuff: on- and off-ramps, a multi-chain wallet, stablecoin payments and the kyc flows around them_  
+✦ _the boring-but-important bits behind them, like apis, sdks and data pipelines_  
+✦ _agents and claude code tools that do the repetitive parts for me_
 
-_i've been deep in claude code for a while. most of my day runs through it,_  
-_along with an ever-growing collection of agents and tools i've built along the way_
-
-_the part i enjoy most has always been the design side of frontend_  
-_so outside work i make sites for people whose work i like_
+_and on the side, websites for people whose work i like,_  
+_where i get way too precious about how one thing moves_
 
 ---
 
@@ -57,6 +55,6 @@ _also: a merged [react native error tracking change](https://github.com/PostHog/
 ---
 
 _usually_  
-_`react` ✎ `react native` ✎ `typescript` ✎ `gsap` ✎ `three.js` ✎ `tailwind` ✎ `claude code`_
+_`typescript` ✎ `react` ✎ `react native` ✎ `node` ✎ `claude code` ✎ `mcp` ✎ `three.js`_
 
 _say hi at [petra.presecki123@gmail.com](mailto:petra.presecki123@gmail.com)_
